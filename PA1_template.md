@@ -43,7 +43,7 @@ histBinWidth <- diff(range(stepsPerDay$steps))/40
 qplot(stepsPerDay$steps,binwidth=histBinWidth) + xlab("Steps")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+![plot of chunk stepsPerDayHist](figure/stepsPerDayHist.png) 
 
 Finally, calculate the mean and median number of steps per day.
 
@@ -67,7 +67,7 @@ Next create the time series plot.
 ggplot(data=avgStepsPerInt, aes(x=interval, y=steps)) + geom_point() + geom_line() + xlab("Interval") + ylab("Average number of steps")
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+![plot of chunk avgStepsPerInterval](figure/avgStepsPerInterval.png) 
 
 Determine the interval with the maximum average number of steps.
 
@@ -107,7 +107,7 @@ impStepsPerDay <- aggregate(steps ~ date, data=imputedActivityData, sum)
 qplot(impStepsPerDay$steps, binwidth=histBinWidth) + xlab("Steps")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
+![plot of chunk imputtedHistogram](figure/imputtedHistogram.png) 
 
 ```r
 meanImpSteps <- mean(stepsPerDay$steps)
@@ -138,4 +138,4 @@ dayAvgStepsPerInt <- aggregate(steps ~ interval + weekend, data = imputedActivit
 ggplot(data=dayAvgStepsPerInt, aes(x=interval, y=steps)) + geom_point() + geom_line() + facet_wrap(~weekend,ncol=1) + xlab("Interval") + ylab("Average number of steps")
 ```
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
+![plot of chunk panelPlot](figure/panelPlot.png) 
