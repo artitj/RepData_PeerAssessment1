@@ -72,7 +72,8 @@ numNA <- sum(is.na(activityData$steps))
 
 There are `r numNA` rows with NA steps.
 
-Since the NAs may introduce a bias into some of the data analysis, the NAs will be replaced with the mean for the time interval.
+Since the NAs may introduce a bias into some of the data analysis, the NAs will be replaced with the mean for the time interval. To accomplish this, the steps column from the data frame with the time interval means (avgStepsPerInt) is replicated by the number of days (repMean). Once this is done, imputting missing data is just a matter of indexing into repMean with the indexes of the NAs in the original dataset. Note that this assumes that the dataset is sorted by the date then the interval, which I ensure by explicitly sorting the dataset in the preprocessing step.
+
 
 ```{r}
 numDays <- length(unique(activityData$date))
